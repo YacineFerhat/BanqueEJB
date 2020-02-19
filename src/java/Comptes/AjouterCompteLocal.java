@@ -15,8 +15,8 @@ import java.util.List;
 @Local
 public interface AjouterCompteLocal {
     void addCompte(Compte compte);
-   List<Compte> getComptes();
-
+    List<Compte> getComptes();
+    List<Compte> getSingleCompte(int idCompte);
 }
 
 
