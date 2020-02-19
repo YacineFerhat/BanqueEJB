@@ -58,81 +58,9 @@ public class AjouterCompte implements AjouterCompteLocal {
          ex.printStackTrace();
       }    
    }    
-    public List<Compte> getSingleCompte(int idCompte){
-       Connection con = null;  
-       String url = "jdbc:mysql://localhost:3306/banque";
-       String driver = "com.mysql.jdbc.Driver";
-       String userName = "root";
-       String password = "";
-       List<Compte> comptes = new ArrayList<Compte>();
-       try{
-          Class.forName(driver).newInstance();
-          con = DriverManager.getConnection(url , userName, password);
-          Statement st = con.createStatement();
-          ResultSet rs = st.executeQuery("select * from t_comptes where Num_cpte = "+idCompte);
-          Compte compte;
-          while (rs.next()) {
-             compte = new Compte();
-             compte.setNumCpte(rs.getInt(1));
-             compte.setNumEmp(rs.getInt(2));                 
-             compte.setNumCli(rs.getInt(3));                 
-             compte.setSolde(rs.getInt(4));                 
-             compte.setDateCr(rs.getString(5));                 
-             compte.setTypePte(rs.getString(6));                 
-             comptes.add(compte);
-          }
-       }catch (SQLException ex) {
-          ex.printStackTrace();
-       } catch (InstantiationException ex) {
-          ex.printStackTrace();
-       } catch (IllegalAccessException ex) {
-          ex.printStackTrace();
-       } catch (ClassNotFoundException ex) {
-          ex.printStackTrace();
-       }
-        return comptes;
-    }
     
-    public List<Compte> getComptes() {
-       Connection con = null;  
-       String url = "jdbc:mysql://localhost:3306/banque";
-       String driver = "com.mysql.jdbc.Driver";
-
-       String userName = "root";
-       String password = "";
-       List<Compte> comptes = new ArrayList<Compte>();
-       try {
-
-          Class.forName(driver).newInstance();
-          con = DriverManager.getConnection(url , userName, password);
-
-          Statement st = con.createStatement();
-          ResultSet rs = st.executeQuery("select * from t_comptes");
-
-          Compte compte;
-          while (rs.next()) {
-             compte = new Compte();
-             compte.setNumCpte(rs.getInt(1));
-             compte.setNumEmp(rs.getInt(2));                 
-             compte.setNumCli(rs.getInt(3));                 
-             compte.setSolde(rs.getInt(4));                 
-             compte.setDateCr(rs.getString(5));                 
-             compte.setTypePte(rs.getString(6));                 
-                             
-
-             comptes.add(compte);
-          }
-       } catch (SQLException ex) {
-          ex.printStackTrace();
-       } catch (InstantiationException ex) {
-          ex.printStackTrace();
-       } catch (IllegalAccessException ex) {
-          ex.printStackTrace();
-       } catch (ClassNotFoundException ex) {
-          ex.printStackTrace();
-       }
-       return comptes;
-    }
+    
+    
  }
 
 
